@@ -1,67 +1,57 @@
-# CodeIgniter 4 Application Starter
+# Sistema Web Mobile para Controle de Qualidade do Ar
 
-## What is CodeIgniter?
+Nosso sistema web é focado em dispositivos móveis e tem como principal objetivo fornecer informações em tempo real sobre a qualidade do ar. Ele é perfeito para quem deseja entender as condições atmosféricas de uma localidade específica a qualquer momento.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Tecnologias Utilizadas
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- **Backend**: CodeIgniter 4
+- **Banco de Dados**: MySQL com phpMyAdmin
+- **Frontend**:
+  - JavaScript puro
+  - Bootstrap
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Funcionalidades
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+### Login e Gerenciamento de Conta
 
-## Installation & updates
+Permitimos que os usuários se registrem e façam login. Dentro do aplicativo, os usuários têm a flexibilidade de:
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+- Mudar o nome de usuário
+- Alterar a senha
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### Pesquisa de Qualidade do Ar
 
-## Setup
+Ao pesquisar por uma cidade, estado ou país, os usuários receberão um feedback imediato sobre a qualidade do ar do local escolhido. O feedback é apresentado através de um emoji-con acompanhado de um texto. As categorias de qualidade do ar incluem:
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+- **Good**
+- **Fair**
+- **Moderate**
+- **Poor**
+- **Very Poor**
 
-## Important Change with index.php
+A informação é obtida em tempo real utilizando a API da [OpenWeather](http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API key}).
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### Gráficos de Concentração de Poluentes
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Com o auxílio da biblioteca Charts JS, ilustramos as concentrações de poluentes em μg/m3. O gráfico abrange os seguintes poluentes:
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- SO2
+- NO2
+- PM10
+- PM2.5
+- O3
+- CO
 
-## Repository Management
+As legendas no gráfico fornecem informações claras sobre as quantidades de cada poluente, permitindo uma análise visual e quantitativa.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+### Seção de Aprendizado
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Para aqueles interessados em aprender mais sobre a qualidade do ar e sua importância, adicionamos:
 
-## Server Requirements
+- Vídeos do YouTube, acessados através de iframes
+- Um texto explicativo que detalha a motivação por trás da criação deste aplicativo
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+## Conclusão e Agradecimentos
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Este aplicativo web foi desenvolvido em um período intenso de menos de 6 horas como parte de um projeto para a Universidade Paulista (UNIP). Gostaria de expressar minha profunda gratidão ao meu colega, RodrigoTemporim, pela dedicação e esforço contínuos durante essa maratona de desenvolvimento.
 
-> **Warning**
-> The end of life date for PHP 7.4 was November 28, 2022. If you are
-> still using PHP 7.4, you should upgrade immediately. The end of life date
-> for PHP 8.0 will be November 26, 2023.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
